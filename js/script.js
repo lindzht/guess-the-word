@@ -8,7 +8,9 @@ const message = document.querySelector(".message");
 const buttonPlayAgain = document.querySelector(".play-again");
 let word = "magnolia";
 let guessedLetters = [];
-let remainingGuesses = 8;
+let remainingGuesses = 9;
+
+
 
 const getWord = async function (){
     const res = await fetch("https://gist.githubusercontent.com/skillcrush-curriculum/7061f1d4d3d5bfe47efbfbcfe42bf57e/raw/5ffc447694486e7dea686f34a6c085ae371b43fe/words.txt");
@@ -126,7 +128,7 @@ const countGuessesRemaining = function(letter){
 const checkWin = function(word){
   if (word.toUpperCase() === wordInProgress.innerHTML){
       message.classList.add("win");
-      message.innerHTML = `<p class="highlight">You guessed correct the word! Congrats!</p>`;
+      message.innerHTML = `<p class="highlight">You guessed the correct word! Congrats!</p>`;
       startOver();
   }
   
@@ -138,6 +140,7 @@ const startOver = function(){
     remainingGuess.classList.add("hide");
     guessedLettersElement.classList.add("hide");
 };
+
 
 buttonPlayAgain.addEventListener("click", function(){
     message.classList.remove("win");
@@ -152,8 +155,6 @@ buttonPlayAgain.addEventListener("click", function(){
     guessedLettersElement.classList.remove("hide");
     getWord();
 })
-
-
 
 
 
